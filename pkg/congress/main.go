@@ -13,7 +13,7 @@ func newClient() *http.Client {
 	return client
 }
 
-func sendRequest(client *http.Client, path string, car *CongressAPIResponse) {
+func sendRequest(client *http.Client, path string, respType interface{}) {
 	var CongressAPIVersion = "v3"
 	var CongressGovBaseURL = fmt.Sprintf("https://api.congress.gov/%s/%s", CongressAPIVersion, path)
 	var CongressGovAPIKey = os.Getenv("CONGRESS_GOV_API_KEY")
@@ -32,7 +32,7 @@ func sendRequest(client *http.Client, path string, car *CongressAPIResponse) {
 		fmt.Println(err)
 	}
 
-	err = json.NewDecoder(resp.Body).Decode(&car)
+	err = json.NewDecoder(resp.Body).Decode(&respType)
 	if err != nil {
 		fmt.Println(err)
 	}

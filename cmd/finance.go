@@ -46,7 +46,6 @@ func init() {
 func getFinanceData() {
 	PropublicaAPIKey := os.Getenv("PROPUBLICA_API_KEY")
 	var PropublicaCampaignFinanceURL = "https://api.propublica.org/campaign-finance/v1/2022/candidates/leaders/contribution-total.json"
-	fmt.Println(PropublicaAPIKey)
 
 	client := &http.Client{}
 	req, err := http.NewRequest("GET", PropublicaCampaignFinanceURL, nil)
@@ -54,7 +53,6 @@ func getFinanceData() {
 		fmt.Println(err)
 	}
 	req.Header.Set("X-API-Key", PropublicaAPIKey)
-	fmt.Println(req)
 	resp, err := client.Do(req)
 	if err != nil {
 		fmt.Println(err)
