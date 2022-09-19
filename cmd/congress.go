@@ -6,6 +6,7 @@ package cmd
 import (
 	"fmt"
 
+	"github.com/micha3lbrown/congress-cli/pkg/congress"
 	"github.com/spf13/cobra"
 )
 
@@ -21,9 +22,20 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("congress called")
+		resp := congress.GetCongress()
+		for _, v := range resp.Congresses {
+			fmt.Println(v.Name, v.EndYear)
+			fmt.Println("================================")
+			for _, v := range v.Sessions {
 
-		congress.GetCongress()
+				fmt.Println(v.Number)
+				fmt.Println(v.Type)
+				fmt.Println(v.Chamber)
+				fmt.Println(v.StartDate, v.EndDate)
+
+				fmt.Println()
+			}
+		}
 	},
 }
 

@@ -1,18 +1,23 @@
 package congress
 
 import (
+	"encoding/json"
 	"fmt"
-	"io"
 	"net/http"
 	"os"
+	"time"
 )
 
-func GetCongress() {
+func newClient() *http.Client {
+	client := &http.Client{Timeout: 10 * time.Second}
+	return client
+}
+
+func sendRequest(client *http.Client, path string, car *CongressAPIResponse) {
 	var CongressAPIVersion = "v3"
-	var CongressGovBaseURL = fmt.Sprintf("https://api.congress.gov/%s/congress", CongressAPIVersion)
+	var CongressGovBaseURL = fmt.Sprintf("https://api.congress.gov/%s/%s", CongressAPIVersion, path)
 	var CongressGovAPIKey = os.Getenv("CONGRESS_GOV_API_KEY")
 
-	client := &http.Client{}
 	req, err := http.NewRequest("GET", CongressGovBaseURL, nil)
 	if err != nil {
 		fmt.Println(err)
@@ -27,6 +32,8 @@ func GetCongress() {
 		fmt.Println(err)
 	}
 
-	body, _ := io.ReadAll(resp.Body)
-	fmt.Println(string(body))
+	err = json.NewDecoder(resp.Body).Decode(&car)
+	if err != nil {
+		fmt.Println(err)
+	}
 }
