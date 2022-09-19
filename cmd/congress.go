@@ -64,7 +64,38 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("bills called")
+		resp := congress.GetBills()
+		fmt.Println(resp)
+	},
+}
+
+var amendmentsCmd = &cobra.Command{
+	Use:   "amendments",
+	Short: "A brief description of your command",
+	Long: `A longer description that spans multiple lines and likely contains examples
+and usage of using your command. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		resp := congress.GetAmendments()
+		fmt.Println(resp)
+	},
+}
+
+var summariesCmd = &cobra.Command{
+	Use:   "summaries",
+	Short: "A brief description of your command",
+	Long: `A longer description that spans multiple lines and likely contains examples
+and usage of using your command. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		resp := congress.GetSummaries()
+		fmt.Println(resp)
 	},
 }
 
@@ -72,14 +103,6 @@ func init() {
 	rootCmd.AddCommand(congressCmd)
 	congressCmd.AddCommand(membersCmd)
 	congressCmd.AddCommand(billsCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// congressCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// congressCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	congressCmd.AddCommand(amendmentsCmd)
+	congressCmd.AddCommand(summariesCmd)
 }

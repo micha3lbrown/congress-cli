@@ -1,5 +1,7 @@
 package congress
 
+import "fmt"
+
 type MembersAPIResponse struct {
 	Members []Member
 }
@@ -33,6 +35,9 @@ type Term struct {
 func GetMembers() MembersAPIResponse {
 	var mar = MembersAPIResponse{}
 	c := newClient()
-	sendRequest(c, "member", &mar)
+	err := sendRequest(c, "member", &mar)
+	if err != nil {
+		fmt.Println(err)
+	}
 	return mar
 }
