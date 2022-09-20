@@ -26,16 +26,6 @@ to quickly create a Cobra application.`,
 		resp := congress.GetCongress()
 		for _, v := range resp.Congresses {
 			fmt.Println(v.Name, v.EndYear)
-			fmt.Println("================================")
-			for _, v := range v.Sessions {
-
-				fmt.Println(v.Number)
-				fmt.Println(v.Type)
-				fmt.Println(v.Chamber)
-				fmt.Println(v.StartDate, v.EndDate)
-
-				fmt.Println()
-			}
 		}
 	},
 }
