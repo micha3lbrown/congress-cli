@@ -54,6 +54,7 @@ func sendRequest(rp requestParams) error {
 		return err
 	}
 
+	fmt.Println("Requests Remaining: " + resp.Header.Get("x-ratelimit-remaining"))
 	if resp.StatusCode != http.StatusOK {
 		err := fmt.Errorf("[API Failure] Status Code: %d", resp.StatusCode)
 		return err

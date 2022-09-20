@@ -130,6 +130,51 @@ to quickly create a Cobra application.`,
 	},
 }
 
+var houseCommunicationsCmd = &cobra.Command{
+	Use:   "house-communications",
+	Short: "A brief description of your command",
+	Long: `A longer description that spans multiple lines and likely contains examples
+and usage of using your command. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		resp := congress.GetHouseCommunications()
+		fmt.Println(resp)
+	},
+}
+
+var nominationsCmd = &cobra.Command{
+	Use:   "nominations",
+	Short: "A brief description of your command",
+	Long: `A longer description that spans multiple lines and likely contains examples
+and usage of using your command. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		resp := congress.GetNominations()
+		fmt.Println(resp)
+	},
+}
+
+var treatiesCmd = &cobra.Command{
+	Use:   "treaties",
+	Short: "A brief description of your command",
+	Long: `A longer description that spans multiple lines and likely contains examples
+and usage of using your command. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		resp := congress.GetTreaties()
+		fmt.Println(resp)
+	},
+}
+
 var summariesCmd = &cobra.Command{
 	Use:   "summaries",
 	Short: "A brief description of your command",
@@ -158,6 +203,6 @@ to quickly create a Cobra application.`,
 
 func init() {
 	rootCmd.AddCommand(congressCmd)
-	congressCmd.AddCommand(congressionalRecordsCmd, membersCmd, billsCmd, amendmentsCmd, committeesCmd, committeeReportsCmd, summariesCmd)
+	congressCmd.AddCommand(congressionalRecordsCmd, membersCmd, billsCmd, amendmentsCmd, committeesCmd, committeeReportsCmd, summariesCmd, houseCommunicationsCmd, nominationsCmd, treatiesCmd)
 	congressCmd.PersistentFlags().StringP("since", "s", "6M", "Expects int followed by date range Y M i.e. 6M")
 }
