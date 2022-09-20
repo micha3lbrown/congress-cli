@@ -7,12 +7,13 @@ import (
 
 type SummariesAPIResponse struct {
 	Summaries []Summary
+	Pagination
 }
 
 type Summary struct {
+	Bill
 	ActionDate         string
 	ActionDesc         string
-	Bill               Bill
 	CurrentChamber     string
 	CurrentChamberCode string
 	LastSummaryUpdate  string

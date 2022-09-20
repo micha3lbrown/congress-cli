@@ -2,11 +2,12 @@ package congress
 
 type BillsAPIResponse struct {
 	Bills []Bill
+	Pagination
 }
 
 type Bill struct {
-	Congress          int
-	LatestAction      LatestAction
+	Congress int
+	LatestAction
 	Number            string
 	OriginChamber     string
 	OriginChamberCode string

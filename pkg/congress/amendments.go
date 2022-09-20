@@ -2,15 +2,16 @@ package congress
 
 type AmendmentsAPIResponse struct {
 	Amendments []Amendment
+	Pagination
 }
 
 type Amendment struct {
-	Congress     int
-	LatestAction LatestAction
-	Number       string
-	Purpose      string
-	Type         string
-	Url          string
+	Congress int
+	LatestAction
+	Number  string
+	Purpose string
+	Type    string
+	Url     string
 }
 
 func GetAmendments() AmendmentsAPIResponse {

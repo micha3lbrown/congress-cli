@@ -3,13 +3,13 @@ package congress
 import "fmt"
 
 type CommitteesAPIResponse struct {
-	Pagination Pagination
 	Committees []Committee
+	Pagination
 }
 
 type CommitteeReportAPIResponse struct {
-	Pagination Pagination
-	Reports    []Report
+	Pagination
+	Reports []Report
 }
 
 type Report struct {

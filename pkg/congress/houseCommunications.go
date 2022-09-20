@@ -4,7 +4,7 @@ import "fmt"
 
 type HouseCommincationsAPIResponse struct {
 	HouseCommunications []HouseCommunication
-	Pagination          Pagination
+	Pagination
 }
 
 type HouseCommunication struct {

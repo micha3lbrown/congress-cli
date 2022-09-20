@@ -4,8 +4,8 @@ import "fmt"
 
 type CongressAPIResponse struct {
 	Congresses []Congresses
-	Pagination Pagination
-	Request    CongressRequest
+	Pagination
+	CongressRequest
 }
 
 type Congresses struct {

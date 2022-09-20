@@ -3,8 +3,8 @@ package congress
 import "fmt"
 
 type TreatiesAPIResponse struct {
-	Treaties   []Treaty
-	Pagination Pagination
+	Treaties []Treaty
+	Pagination
 }
 
 type Treaty struct {

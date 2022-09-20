@@ -4,20 +4,20 @@ import "fmt"
 
 type NominationsAPIResponse struct {
 	Nominations []Nomination
-	Pagination  Pagination
+	Pagination
 }
 
 type Nomination struct {
-	Citation       string
-	Congress       int
-	Description    string
-	LatestAction   []LatestAction
-	NominationType NominationType
-	Number         int
-	PartNumber     string
-	ReceivedDate   string
-	UpdateDate     string
-	URL            string
+	Citation     string
+	Congress     int
+	Description  string
+	LatestAction []LatestAction
+	NominationType
+	Number       int
+	PartNumber   string
+	ReceivedDate string
+	UpdateDate   string
+	URL          string
 }
 
 type NominationType struct {

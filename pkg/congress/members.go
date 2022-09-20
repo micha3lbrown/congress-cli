@@ -4,17 +4,18 @@ import "fmt"
 
 type MembersAPIResponse struct {
 	Members []Member
+	Pagination
 }
 
 type Member struct {
 	BioguideId string
-	Depiction  Depiction
-	District   int
-	Name       string
-	Party      string
-	Served     Served
-	State      string
-	Url        string
+	Depiction
+	District int
+	Name     string
+	Party    string
+	Served   Served
+	State    string
+	Url      string
 }
 
 type Depiction struct {
