@@ -5,7 +5,7 @@ type AmendmentsAPIResponse struct {
 }
 
 type Amendment struct {
-	Congress     string
+	Congress     int
 	LatestAction LatestAction
 	Number       string
 	Purpose      string
@@ -16,6 +16,7 @@ type Amendment struct {
 func GetAmendments() AmendmentsAPIResponse {
 	var aar = AmendmentsAPIResponse{}
 	c := newClient()
-	sendRequest(c, "amendment", &aar)
+	rp := newRequestParams(c, "amendment", &aar, nil)
+	sendRequest(rp)
 	return aar
 }

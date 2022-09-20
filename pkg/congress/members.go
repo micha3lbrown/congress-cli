@@ -35,7 +35,8 @@ type Term struct {
 func GetMembers() MembersAPIResponse {
 	var mar = MembersAPIResponse{}
 	c := newClient()
-	err := sendRequest(c, "member", &mar)
+	rp := newRequestParams(c, "member", &mar, nil)
+	err := sendRequest(rp)
 	if err != nil {
 		fmt.Println(err)
 	}

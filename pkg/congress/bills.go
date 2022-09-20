@@ -24,6 +24,7 @@ type LatestAction struct {
 func GetBills() BillsAPIResponse {
 	var bar = BillsAPIResponse{}
 	c := newClient()
-	sendRequest(c, "bill", &bar)
+	rp := newRequestParams(c, "bill", &bar, nil)
+	sendRequest(rp)
 	return bar
 }

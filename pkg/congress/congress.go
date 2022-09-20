@@ -1,5 +1,7 @@
 package congress
 
+import "fmt"
+
 type CongressAPIResponse struct {
 	Congresses []Congresses
 	Pagination CongressPagination `json:"pagination"`
@@ -33,6 +35,10 @@ type Session struct {
 func GetCongress() CongressAPIResponse {
 	var car = CongressAPIResponse{}
 	c := newClient()
-	sendRequest(c, "congress", &car)
+	rp := newRequestParams(c, "congress", &car, nil)
+	err := sendRequest(rp)
+	if err != nil {
+		fmt.Println(err)
+	}
 	return car
 }

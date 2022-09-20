@@ -5,6 +5,7 @@ package cmd
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/micha3lbrown/congress-cli/pkg/congress"
 	"github.com/spf13/cobra"
@@ -94,8 +95,19 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		resp := congress.GetSummaries()
-		fmt.Println(resp)
+		dateFormat := "2006-04-01T00:00:00Z"
+		// dateRange, err := cmd.Flags().GetString("since")
+		// if err != nil {
+		// 	fmt.Println(err)
+		// }
+		startDate := time.Now().UTC().Format(dateFormat)
+		endDate := time.Now().UTC().AddDate(0, -6, 0).Format(dateFormat)
+
+		resp := congress.GetSummaries(string(startDate), string(endDate))
+
+		for _, v := range resp.Summaries {
+			fmt.Printf("Bill #%s\n%s\n%s\n\n\n", v.Bill.Number, v.Bill.Title, v.Text)
+		}
 	},
 }
 
@@ -105,4 +117,6 @@ func init() {
 	congressCmd.AddCommand(billsCmd)
 	congressCmd.AddCommand(amendmentsCmd)
 	congressCmd.AddCommand(summariesCmd)
+	congressCmd.PersistentFlags().StringP("since", "s", "6M", "Expects int followed by date range Y M i.e. 6M")
+
 }
