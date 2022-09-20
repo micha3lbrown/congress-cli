@@ -4,8 +4,8 @@ import "fmt"
 
 type CongressAPIResponse struct {
 	Congresses []Congresses
-	Pagination CongressPagination `json:"pagination"`
-	Request    CongressRequest    `json:"request"`
+	Pagination Pagination
+	Request    CongressRequest
 }
 
 type Congresses struct {
@@ -14,7 +14,7 @@ type Congresses struct {
 	Sessions []Session
 }
 
-type CongressPagination struct {
+type Pagination struct {
 	Count int
 	Next  string
 }

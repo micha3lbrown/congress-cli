@@ -100,6 +100,21 @@ to quickly create a Cobra application.`,
 	},
 }
 
+var committeeReportsCmd = &cobra.Command{
+	Use:   "committeeReports",
+	Short: "A brief description of your command",
+	Long: `A longer description that spans multiple lines and likely contains examples
+and usage of using your command. For example:
+
+Cobra is a CLI library for Go that empowers applications.
+This application is a tool to generate the needed files
+to quickly create a Cobra application.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		resp := congress.GetCommitteReports()
+		fmt.Println(resp)
+	},
+}
+
 var summariesCmd = &cobra.Command{
 	Use:   "summaries",
 	Short: "A brief description of your command",
@@ -128,6 +143,6 @@ to quickly create a Cobra application.`,
 
 func init() {
 	rootCmd.AddCommand(congressCmd)
-	congressCmd.AddCommand(membersCmd, billsCmd, amendmentsCmd, committeesCmd, summariesCmd)
+	congressCmd.AddCommand(membersCmd, billsCmd, amendmentsCmd, committeesCmd, committeeReportsCmd, summariesCmd)
 	congressCmd.PersistentFlags().StringP("since", "s", "6M", "Expects int followed by date range Y M i.e. 6M")
 }
