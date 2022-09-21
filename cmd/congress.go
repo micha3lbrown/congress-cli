@@ -15,13 +15,8 @@ var CongressGovAPIKey string
 
 var congressCmd = &cobra.Command{
 	Use:   "congress",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "A list of congressional sessions including name, year and sessions",
+	Long:  `A list of congressional sessions including name, year and sessions`,
 	Run: func(cmd *cobra.Command, args []string) {
 		resp := congress.GetCongress()
 		for _, v := range resp.Congresses {
@@ -32,13 +27,8 @@ to quickly create a Cobra application.`,
 
 var congressionalRecordsCmd = &cobra.Command{
 	Use:   "congressional-records",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "A list of congressional records and associated issues and sessions",
+	Long:  `A list of congressional records and associated issues and sessions`,
 	Run: func(cmd *cobra.Command, args []string) {
 		resp := congress.GetCongressionalRecords()
 		fmt.Println(resp)
@@ -47,13 +37,8 @@ to quickly create a Cobra application.`,
 
 var membersCmd = &cobra.Command{
 	Use:   "members",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "A list of the members of congress",
+	Long:  `A list of the members of congress`,
 	Run: func(cmd *cobra.Command, args []string) {
 		resp := congress.GetMembers()
 		fmt.Println(resp)
@@ -62,13 +47,7 @@ to quickly create a Cobra application.`,
 
 var billsCmd = &cobra.Command{
 	Use:   "bills",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "A list of bills and the associated congress/session",
 	Run: func(cmd *cobra.Command, args []string) {
 		resp := congress.GetBills()
 		fmt.Println(resp)
@@ -77,13 +56,7 @@ to quickly create a Cobra application.`,
 
 var amendmentsCmd = &cobra.Command{
 	Use:   "amendments",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "A list of amendments and associated details",
 	Run: func(cmd *cobra.Command, args []string) {
 		resp := congress.GetAmendments()
 		fmt.Println(resp)
@@ -92,13 +65,7 @@ to quickly create a Cobra application.`,
 
 var committeesCmd = &cobra.Command{
 	Use:   "committees",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "A list of congressional committees",
 	Run: func(cmd *cobra.Command, args []string) {
 		resp := congress.GetCommittees()
 		fmt.Println(resp)
@@ -107,13 +74,7 @@ to quickly create a Cobra application.`,
 
 var committeeReportsCmd = &cobra.Command{
 	Use:   "committeeReports",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "A list of congressional committee reports",
 	Run: func(cmd *cobra.Command, args []string) {
 		resp := congress.GetCommitteReports()
 		fmt.Println(resp)
@@ -122,13 +83,7 @@ to quickly create a Cobra application.`,
 
 var houseCommunicationsCmd = &cobra.Command{
 	Use:   "house-communications",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "A list of congressional house communications",
 	Run: func(cmd *cobra.Command, args []string) {
 		resp := congress.GetHouseCommunications()
 		fmt.Println(resp)
@@ -137,13 +92,7 @@ to quickly create a Cobra application.`,
 
 var nominationsCmd = &cobra.Command{
 	Use:   "nominations",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "A list of congressional nominations",
 	Run: func(cmd *cobra.Command, args []string) {
 		resp := congress.GetNominations()
 		fmt.Println(resp)
@@ -152,13 +101,7 @@ to quickly create a Cobra application.`,
 
 var treatiesCmd = &cobra.Command{
 	Use:   "treaties",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "A list of congressional treaties",
 	Run: func(cmd *cobra.Command, args []string) {
 		resp := congress.GetTreaties()
 		fmt.Println(resp)
@@ -167,13 +110,7 @@ to quickly create a Cobra application.`,
 
 var summariesCmd = &cobra.Command{
 	Use:   "summaries",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "A list of congressional summaries by date range (default: past 6 months)",
 	Run: func(cmd *cobra.Command, args []string) {
 		dateFormat := "2006-04-01T00:00:00Z"
 		// dateRange, err := cmd.Flags().GetString("since")

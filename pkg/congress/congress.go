@@ -5,7 +5,7 @@ import "fmt"
 type CongressAPIResponse struct {
 	Congresses []Congresses
 	Pagination
-	CongressRequest
+	Request
 }
 
 type Congresses struct {
@@ -19,7 +19,7 @@ type Pagination struct {
 	Next  string
 }
 
-type CongressRequest struct {
+type Request struct {
 	ContentType string
 	Format      string
 }
